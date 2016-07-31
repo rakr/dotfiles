@@ -43,6 +43,10 @@ set wildmode=longest:list,full
 " make tab completion for files/buffers act like bash
 set wildmenu
 
+" Tab settings
+set noexpandtab
+set tabstop=2 shiftwidth=2 softtabstop=2
+
 set mouse=a
 set conceallevel=0
 
@@ -57,7 +61,7 @@ set splitbelow
 set ignorecase
 set smartcase
 
-set synmaxcol=120
+set synmaxcol=500
 syntax on
 
 let &colorcolumn='72,78'
