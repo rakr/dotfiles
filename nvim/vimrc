@@ -1,0 +1,185 @@
+" ┏━┓┏━┓╻┏ ┏━┓   ╻ ╻╻┏┳┓┏━┓┏━╸
+" ┣┳┛┣━┫┣┻┓┣┳┛   ┃┏┛┃┃┃┃┣┳┛┃
+" ╹┗╸╹ ╹╹ ╹╹┗╸   ┗┛ ╹╹ ╹╹┗╸┗━╸
+
+" ┏━┓╻  ╻ ╻┏━╸╻┏┓╻┏━┓
+" ┣━┛┃  ┃ ┃┃╺┓┃┃┗┫┗━┓
+" ╹  ┗━╸┗━┛┗━┛╹╹ ╹┗━┛
+" {{{
+call plug#begin('~/.config/nvim/plugged')
+
+" My local repos
+Plug '~/.development/vim/vim-one'
+Plug '~/.development/vim/vim-two-firewatch'
+
+Plug 'tpope/vim-fugitive'
+Plug 'itchyny/lightline.vim'
+call plug#end()
+
+let g:netrw_liststyle=3
+" }}}
+
+" ┏━╸╻  ┏━┓┏┓ ┏━┓╻     ┏━╸┏━┓┏┓╻┏━╸╻┏━╸╻ ╻┏━┓┏━┓╺┳╸╻┏━┓┏┓╻
+" ┃╺┓┃  ┃ ┃┣┻┓┣━┫┃     ┃  ┃ ┃┃┗┫┣╸ ┃┃╺┓┃ ┃┣┳┛┣━┫ ┃ ┃┃ ┃┃┗┫
+" ┗━┛┗━╸┗━┛┗━┛╹ ╹┗━╸   ┗━╸┗━┛╹ ╹╹  ╹┗━┛┗━┛╹┗╸╹ ╹ ╹ ╹┗━┛╹ ╹
+" {{{
+if (has("termguicolors"))
+  set termguicolors
+endif
+
+filetype on
+filetype indent on
+filetype plugin on
+syntax enable
+set cursorline
+set number
+
+set noswapfile
+set nobackup
+set nowritebackup
+set scrolloff=5
+set hidden
+set wildmode=longest:list,full
+" make tab completion for files/buffers act like bash
+set wildmenu
+
+set mouse=a
+set conceallevel=0
+
+set relativenumber number
+
+set undofile
+set undodir="$HOME/.VIM_UNDO_FILES"
+
+set splitright
+set splitbelow
+
+set ignorecase
+set smartcase
+
+set synmaxcol=120
+syntax on
+
+let &colorcolumn='72,78'
+" Recommended: continuous vertical split line.
+set fillchars=vert:\│
+
+set background=light
+let g:two_firewatch_italics=1
+let g:one_allow_italics = 1
+colo one
+"}}}
+
+" ╻  ╻┏━╸╻ ╻╺┳╸╻  ╻┏┓╻┏━╸
+" ┃  ┃┃╺┓┣━┫ ┃ ┃  ┃┃┗┫┣╸
+" ┗━╸╹┗━┛╹ ╹ ╹ ┗━╸╹╹ ╹┗━╸
+" {{{
+set laststatus=2
+let g:lightline = {
+      \ 'colorscheme': 'PaperColor',
+      \ 'mode_map': { 'c': 'NORMAL' },
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ]
+      \ },
+      \ 'component_function': {
+      \   'modified': 'LightLineModified',
+      \   'readonly': 'LightLineReadonly',
+      \   'fugitive': 'LightLineFugitive',
+      \   'filename': 'LightLineFilename',
+      \   'fileformat': 'LightLineFileformat',
+      \   'filetype': 'LightLineFiletype',
+      \   'fileencoding': 'LightLineFileencoding',
+      \   'mode': 'LightLineMode',
+      \ },
+      \ 'separator': { 'left': '', 'right': '' },
+      \ 'subseparator': { 'left': '', 'right': '' }
+      \ }
+
+function! LightLineModified()
+  return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '●' : &modifiable ? '' : '-'
+endfunction
+
+function! LightLineReadonly()
+  return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? '' : ''
+endfunction
+
+function! LightLineFilename()
+  return ('' != LightLineReadonly() ? LightLineReadonly() . ' ' : '') .
+        \ (&ft == 'vimfiler' ? vimfiler#get_status_string() :
+        \  &ft == 'unite' ? unite#get_status_string() :
+        \  &ft == 'vimshell' ? vimshell#get_status_string() :
+        \ '' != expand('%:t') ? expand('%:t') : '[No Name]') .
+        \ ('' != LightLineModified() ? ' ' . LightLineModified() : '')
+endfunction
+
+function! LightLineFugitive()
+  if &ft !~? 'vimfiler\|gundo' && exists("*fugitive#head")
+    let branch = fugitive#head()
+    return branch !=# '' ? ' '.branch : ''
+  endif
+  return ''
+endfunction
+
+function! LightLineFileformat()
+  return winwidth(0) > 70 ? &fileformat : ''
+endfunction
+
+function! LightLineFiletype()
+  return winwidth(0) > 70 ? (&filetype !=# '' ? &filetype : 'no ft') : ''
+endfunction
+
+function! LightLineFileencoding()
+  return winwidth(0) > 70 ? (&fenc !=# '' ? &fenc : &enc) : ''
+endfunction
+
+function! LightLineMode()
+  return winwidth(0) > 60 ? lightline#mode() : ''
+endfunction
+" }}}
+
+" ┏┳┓┏━┓┏━┓┏━┓╻┏┓╻┏━╸┏━┓
+" ┃┃┃┣━┫┣━┛┣━┛┃┃┗┫┃╺┓┗━┓
+" ╹ ╹╹ ╹╹  ╹  ╹╹ ╹┗━┛┗━┛
+" {{{
+let g:mapleader=','
+" Better navigation between buffers and tabs
+nnoremap <leader>]  :bn<cr>
+nnoremap <leader>[  :bp<cr>
+nnoremap <leader><leader>[ :tabp<cr>
+nnoremap <leader><leader>] :tabn<cr>
+
+" Clears incsearch
+nnoremap <silent> <cr><cr> :nohlsearch<cr>
+
+" Move around splits with <c-hjkl>
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-h> <c-w>h
+nnoremap <c-l> <c-w>l
+nnoremap <a-h> <c-w><s-h>
+nnoremap <a-j> <c-w><s-j>
+nnoremap <a-k> <c-w><s-k>
+nnoremap <a-l> <c-w><s-l>
+
+" Display highlight information
+nnoremap <leader>ii :echo synIDattr(synID(line('.'), col('.'), 1), 'name')<CR>
+
+" Open file navigator in split or in the current buffer
+nnoremap <leader>k :vs.<cr>
+nnoremap <leader>l :sp.<cr>
+nnoremap <leader>; :e.<cr>
+
+" Display highlighting groups
+nnoremap <leader>hi :so $VIMRUNTIME/syntax/hitest.vim<cr>
+
+" Indentation in Visual Mode and keep lines selected
+vmap < <gv
+vmap > >gv
+
+set pastetoggle=<f6>
+
+" Fold Mapping
+nnoremap <space> za
+vnoremap <space> za
+" }}}
+" vim: set fdl=0 fdm=marker:
