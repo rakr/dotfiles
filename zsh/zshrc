@@ -8,3 +8,6 @@ eval "$(rbenv init - --no-rehash)"
 # ┣━┛┣┳┛┃ ┃┃┃┃┣━┛ ┃
 # ╹  ╹┗╸┗━┛╹ ╹╹   ╹
 PROMPT="%${PWD/#~/~}  "
+
+export VISUAL=nvim
+export EDITOR=nvim
