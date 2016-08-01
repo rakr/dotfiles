@@ -68,7 +68,7 @@ let &colorcolumn='72,78'
 " Recommended: continuous vertical split line.
 set fillchars=vert:\│
 
-set background=light
+set background=dark
 let g:two_firewatch_italics=1
 let g:one_allow_italics = 1
 colo one
