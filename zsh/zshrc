@@ -1,13 +1,10 @@
+autoload -U promptinit && promptinit
+prompt pure
 export PATH="$HOME/.bin:$PATH"
 
 # recommended by brew doctor
 export PATH="/usr/local/bin:$PATH"
 eval "$(rbenv init - --no-rehash)"
-
-# ┏━┓┏━┓┏━┓┏┳┓┏━┓╺┳╸
-# ┣━┛┣┳┛┃ ┃┃┃┃┣━┛ ┃
-# ╹  ╹┗╸┗━┛╹ ╹╹   ╹
-PROMPT="%${PWD/#~/~}  "
 
 export VISUAL=nvim
 export EDITOR=nvim
