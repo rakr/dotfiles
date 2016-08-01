@@ -44,7 +44,7 @@ set wildmode=longest:list,full
 set wildmenu
 
 " Tab settings
-set noexpandtab
+set expandtab
 set tabstop=2 shiftwidth=2 softtabstop=2
 
 set mouse=a
