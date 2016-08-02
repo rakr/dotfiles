@@ -11,3 +11,8 @@ eval "$(rbenv init - --no-rehash)"
 
 export VISUAL=nvim
 export EDITOR=nvim
+
+source ~/.config/zsh/aliases
+
+# Completions
+fpath=(~/.config/zsh/zsh-completions/src $fpath)
