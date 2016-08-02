@@ -1,0 +1,5 @@
+[user]
+  name = Ramzi Akremi
+  email = ramzi.dev@icloud.com
+[credential]
+  helper = osxkeychain
