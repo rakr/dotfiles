@@ -1,3 +1,4 @@
+#
 autoload -U promptinit && promptinit
 PURE_PROMPT_SYMBOL=" "
 PURE_GIT_DOWN_ARROW=""
