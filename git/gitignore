@@ -1,0 +1,9 @@
+.DS_Store
+.Spotlight-V100
+.Trashes
+Thumbs.db
+.netrwhist
+.rbenv-gemsets
+.env
+gems/
+.gems/

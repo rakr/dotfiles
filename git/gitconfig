@@ -3,3 +3,5 @@
   email = ramzi.dev@icloud.com
 [credential]
   helper = osxkeychain
+[core]
+	excludesfile = /Users/rakr/.gitignore
