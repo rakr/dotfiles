@@ -70,6 +70,36 @@ call plug#end()
 let g:netrw_liststyle=3
 " }}}
 
+" ╺┳┓┏━╸┏━┓┏━┓╻  ┏━╸╺┳╸┏━╸
+"  ┃┃┣╸ ┃ ┃┣━┛┃  ┣╸  ┃ ┣╸
+" ╺┻┛┗━╸┗━┛╹  ┗━╸┗━╸ ╹ ┗━╸
+" {{{
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_debug = 1
+call deoplete#custom#set('_', 'min_pattern_length', 2)
+"set completeopt+=noinsert
+
+" Use auto delimiter
+call deoplete#custom#set('_', 'converters',
+  \ ['converter_auto_paren',
+  \  'converter_auto_delimiter', 'remove_overlap'])
+
+let g:deoplete#keyword_patterns = {}
+let g:deoplete#keyword_patterns._ = '[a-zA-Z_]\k*\(?'
+" Movement within 'ins-completion-menu'
+imap <expr><C-j>   pumvisible() ? "\<C-n>" : "\<C-j>"
+imap <expr><C-k>   pumvisible() ? "\<C-p>" : "\<C-k>"
+
+" Scroll pages in menu
+inoremap <expr><C-f> pumvisible() ? "\<PageDown>\<C-p>\<C-n>" : "\<Right>"
+inoremap <expr><C-b> pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<Left>"
+imap     <expr><C-d> pumvisible() ? "\<PageDown>\<C-p>\<C-n>" : "\<C-d>"
+imap     <expr><C-u> pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<C-u>"
+
+" Undo completion
+inoremap <expr><C-g> deoplete#mappings#undo_completion()
+"}}}
+
 " ╺┳┓┏━╸╻ ╻╻┏━╸┏━┓┏┓╻┏━┓
 "  ┃┃┣╸ ┃┏┛┃┃  ┃ ┃┃┗┫┗━┓
 " ╺┻┛┗━╸┗┛ ╹┗━╸┗━┛╹ ╹┗━┛
