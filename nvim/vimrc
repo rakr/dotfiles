@@ -264,4 +264,20 @@ set pastetoggle=<f6>
 nnoremap <space> za
 vnoremap <space> za
 " }}}
+
+" ┏┓╻┏━╸┏━┓╺┳┓╺┳╸┏━┓┏━╸┏━╸
+" ┃┗┫┣╸ ┣┳┛ ┃┃ ┃ ┣┳┛┣╸ ┣╸
+" ╹ ╹┗━╸╹┗╸╺┻┛ ╹ ╹┗╸┗━╸┗━╸
+" {{{
+map <leader>n :NERDTreeToggle<cr>
+"autocmd StdinReadPre * let s:std_in=1
+"autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+let g:NERDTreeShowHidden=1
+let g:NERDTreeWinSize=30
+let g:NERDTreeAutoDeleteBuffer=1
+let g:NERDTreeShowHidden=1
+let g:NERDTreeShowBookmarks=1
+let g:NERDTreeActivateNode='<Space>'
+"let g:NERDTreeHijackNetrw=1
+" }}}
 " vim: set fdl=0 fdm=marker:
