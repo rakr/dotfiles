@@ -1,0 +1,17 @@
+# vim: set filetype=zsh:
+# ┏━┓╻  ╻┏━┓┏━┓┏━╸┏━┓
+# ┣━┫┃  ┃┣━┫┗━┓┣╸ ┗━┓
+# ╹ ╹┗━╸╹╹ ╹┗━┛┗━╸┗━┛
+
+# Filesystem
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+
+# File listing
+alias ls='ls -G'
+
+# Vimlike commands
+alias :q='exit'
+alias :e='nvim'
+
