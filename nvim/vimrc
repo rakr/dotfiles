@@ -433,6 +433,8 @@ let g:NERDTreeActivateNode='<Space>'
 " {{{
 nmap <F12> :TagbarToggle<CR>
 
+autocmd FileType tagbar setlocal nocursorline nocursorcolumn
+
 let g:tagbar_type_elixir = {
     \ 'ctagstype' : 'elixir',
     \ 'kinds' : [
