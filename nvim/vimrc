@@ -13,7 +13,6 @@ function! DoRemote(arg)
 endfunction
 
 call plug#begin('~/.config/nvim/plugged')
-
   " My local repos
   Plug '~/.development/vim/vim-one'
   Plug '~/.development/vim/vim-two-firewatch'
@@ -64,7 +63,6 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'mustache/vim-mustache-handlebars'
   Plug 'tpope/vim-rails'
   Plug 'vim-ruby/vim-ruby'
-
 call plug#end()
 
 let g:netrw_liststyle=3
@@ -328,6 +326,36 @@ set pastetoggle=<f6>
 nnoremap <space> za
 vnoremap <space> za
 " }}}
+
+" ┏┓╻┏━╸┏━┓┏┳┓┏━┓╻┏ ┏━╸
+" ┃┗┫┣╸ ┃ ┃┃┃┃┣━┫┣┻┓┣╸
+" ╹ ╹┗━╸┗━┛╹ ╹╹ ╹╹ ╹┗━╸
+" {{{
+let g:test_strategy = 'neovim'
+let g:neomake_open_list = 0
+let g:neomake_list_height = 5
+let g:neomake_serialize = 1
+let g:neomake_verbose = 0
+let g:neomake_warning_sign = {'text': '', 'texthl': 'NeomakeWarningSign'}
+let g:neomake_coffeescript_enabled_makers = ['coffeelint']
+let g:neomake_elixir_enabled_makers = ['elixir']
+"let g:neomake_scss_enabled_checkers = ['scsslint']
+let g:neomake_go_enabled_checkers = ['golint']
+let g:neomake_sass_enabled_checkers = ['scsslint']
+"let g:neomake_javascript_enabled_checkers = ['eslint', 'jscs']
+"let g:neomake_ruby_enabled_checkers = ['mri']
+"let g:neomake_python_enabled_checkers = ['pyflakes', 'pylint', 'python', 'pep8', 'flake8']
+let g:neomake_vim_checkers=['vimlint']
+augroup run_neomake
+  autocmd! BufWritePost * Neomake
+augroup end
+
+let g:neomake_error_sign   = {'text': '', 'texthl': 'ErrorMsg'}
+let g:neomake_warning_sign = {'text': '', 'texthl': 'WarningMsg'}
+let g:neomake_message_sign = {'text': '!', 'texthl': 'WarningMsg'}
+let g:neomake_info_sign    = {'text': '', 'texthl': 'Todo'}
+
+"}}}
 
 " ┏┓╻┏━╸┏━┓┏━┓┏┓╻╻┏━┓┏━┓┏━╸╺┳╸
 " ┃┗┫┣╸ ┃ ┃┗━┓┃┗┫┃┣━┛┣━┛┣╸  ┃
