@@ -2,10 +2,7 @@
 " ┣┳┛┣━┫┣┻┓┣┳┛   ┃┏┛┃┃┃┃┣┳┛┃
 " ╹┗╸╹ ╹╹ ╹╹┗╸   ┗┛ ╹╹ ╹╹┗╸┗━╸
 
-" ┏━┓╻  ╻ ╻┏━╸╻┏┓╻┏━┓
-" ┣━┛┃  ┃ ┃┃╺┓┃┃┗┫┗━┓
-" ╹  ┗━╸┗━┛┗━┛╹╹ ╹┗━┛
-" {{{
+" Plugins {{{
 function! DoRemote(arg)
   if (has("nvim"))
     UpdateRemotePlugins
@@ -15,6 +12,7 @@ endfunction
 call plug#begin('~/.config/nvim/plugged')
   " My local repos
   Plug '~/.development/vim/vim-one'
+  Plug '~/.development/vim/vim-material'
   Plug '~/.development/vim/vim-two-firewatch'
 
   Plug 'craigemery/vim-autotag'
@@ -24,10 +22,12 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'ryanoasis/vim-devicons'
   Plug 'junegunn/vim-easy-align'
   Plug 'easymotion/vim-easymotion'
+  Plug 'xolox/vim-easytags'
   Plug 'tpope/vim-fugitive'
   Plug 'airblade/vim-gitgutter'
   Plug 'nathanaelkane/vim-indent-guides'
   Plug 'itchyny/lightline.vim'
+  Plug 'xolox/vim-misc'
   Plug 'terryma/vim-multiple-cursors'
   Plug 'benekastah/neomake'
   Plug 'Shougo/neosnippet.vim'
@@ -70,10 +70,7 @@ call plug#end()
 let g:netrw_liststyle=3
 " }}}
 
-" ┏━╸╺┳╸┏━┓╻  ┏━┓
-" ┃   ┃ ┣┳┛┃  ┣━┛
-" ┗━╸ ╹ ╹┗╸┗━╸╹
-" {{{
+" CtrlP {{{
 nnoremap <silent> ,p :CtrlP<CR>
 
 if executable('ag')
@@ -90,10 +87,7 @@ let g:ctrlp_show_hidden = 1
 let g:ctrlp_working_path_mode = 'ra'
 "}}}
 
-" ╺┳┓┏━╸┏━┓┏━┓╻  ┏━╸╺┳╸┏━╸
-"  ┃┃┣╸ ┃ ┃┣━┛┃  ┣╸  ┃ ┣╸
-" ╺┻┛┗━╸┗━┛╹  ┗━╸┗━╸ ╹ ┗━╸
-" {{{
+" Deoplete {{{
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_debug = 1
 call deoplete#custom#set('_', 'min_pattern_length', 2)
@@ -120,10 +114,7 @@ imap     <expr><C-u> pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<C-u>"
 inoremap <expr><C-g> deoplete#mappings#undo_completion()
 "}}}
 
-" ╺┳┓┏━╸╻ ╻╻┏━╸┏━┓┏┓╻┏━┓
-"  ┃┃┣╸ ┃┏┛┃┃  ┃ ┃┃┗┫┗━┓
-" ╺┻┛┗━╸┗┛ ╹┗━╸┗━┛╹ ╹┗━┛
-" {{{
+" DevIcons {{{
 let g:WebDevIconsOS = 'Darwin'
 let g:DevIconsEnableFoldersOpenClose = 1
 let g:WebDevIconsUnicodeDecorateFolderNodesDefaultSymbol = ''
@@ -147,10 +138,7 @@ let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['scss'] = ''
 let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['sh'] = ''
 "}}}
 
-" ┏━╸╻╺┳╸┏━╸╻ ╻╺┳╸╺┳╸┏━╸┏━┓
-" ┃╺┓┃ ┃ ┃╺┓┃ ┃ ┃  ┃ ┣╸ ┣┳┛
-" ┗━┛╹ ╹ ┗━┛┗━┛ ╹  ╹ ┗━╸╹┗╸
-" {{{
+" GitGutter {{{
 let g:gitgutter_sign_added = '+'
 let g:gitgutter_sign_modified = '∼'
 let g:gitgutter_sign_removed = '-'
@@ -158,10 +146,7 @@ let g:gitgutter_sign_removed_first_line = ''
 let g:gitgutter_sign_modified_removed = ''
 " }}}
 
-" ┏━╸╻  ┏━┓┏┓ ┏━┓╻     ┏━╸┏━┓┏┓╻┏━╸╻┏━╸╻ ╻┏━┓┏━┓╺┳╸╻┏━┓┏┓╻
-" ┃╺┓┃  ┃ ┃┣┻┓┣━┫┃     ┃  ┃ ┃┃┗┫┣╸ ┃┃╺┓┃ ┃┣┳┛┣━┫ ┃ ┃┃ ┃┃┗┫
-" ┗━┛┗━╸┗━┛┗━┛╹ ╹┗━╸   ┗━╸┗━┛╹ ╹╹  ╹┗━┛┗━┛╹┗╸╹ ╹ ╹ ╹┗━┛╹ ╹
-" {{{
+" Global Configuration {{{
 if (has("termguicolors"))
   set termguicolors
 endif
@@ -207,16 +192,14 @@ let &colorcolumn='72,78'
 " Recommended: continuous vertical split line.
 set fillchars=vert:\│
 
-set background=dark
+set background=light
 let g:two_firewatch_italics=1
 let g:one_allow_italics = 1
-colo one
+let g:material_allow_italics = 1
+colo material
 "}}}
 
-" ┏━╸┏━┓   ┏━┓╻ ╻┏━┓┏━┓┏━┓┏━┓╺┳╸
-" ┃╺┓┃ ┃   ┗━┓┃ ┃┣━┛┣━┛┃ ┃┣┳┛ ┃
-" ┗━┛┗━┛   ┗━┛┗━┛╹  ╹  ┗━┛╹┗╸ ╹
-" {{{
+" Go Support {{{
 " use goimports for formatting
 let g:go_fmt_command = "goimports"
 
@@ -236,10 +219,7 @@ au Filetype go nnoremap <leader>s :sp <CR>:exe "GoDef"<CR>
 au Filetype go nnoremap <leader>t :tab split <CR>:exe "GoDef"<CR>
 " }}}
 
-" ╻  ╻┏━╸╻ ╻╺┳╸╻  ╻┏┓╻┏━╸
-" ┃  ┃┃╺┓┣━┫ ┃ ┃  ┃┃┗┫┣╸
-" ┗━╸╹┗━┛╹ ╹ ╹ ┗━╸╹╹ ╹┗━╸
-" {{{
+" Lightline {{{
 set laststatus=2
 let g:lightline = {
       \ 'colorscheme': 'PaperColor',
@@ -303,10 +283,7 @@ function! LightLineMode()
 endfunction
 " }}}
 
-" ┏┳┓┏━┓┏━┓┏━┓╻┏┓╻┏━╸┏━┓
-" ┃┃┃┣━┫┣━┛┣━┛┃┃┗┫┃╺┓┗━┓
-" ╹ ╹╹ ╹╹  ╹  ╹╹ ╹┗━┛┗━┛
-" {{{
+" Mappings {{{
 let g:mapleader=','
 " Better navigation between buffers and tabs
 nnoremap <leader>]  :bn<cr>
@@ -349,10 +326,7 @@ nnoremap <space> za
 vnoremap <space> za
 " }}}
 
-" ┏┓╻┏━╸┏━┓┏┳┓┏━┓╻┏ ┏━╸
-" ┃┗┫┣╸ ┃ ┃┃┃┃┣━┫┣┻┓┣╸
-" ╹ ╹┗━╸┗━┛╹ ╹╹ ╹╹ ╹┗━╸
-" {{{
+" NeoMake {{{
 let g:test_strategy = 'neovim'
 let g:neomake_open_list = 0
 let g:neomake_list_height = 5
@@ -379,10 +353,7 @@ let g:neomake_info_sign    = {'text': '', 'texthl': 'Todo'}
 
 "}}}
 
-" ┏┓╻┏━╸┏━┓┏━┓┏┓╻╻┏━┓┏━┓┏━╸╺┳╸
-" ┃┗┫┣╸ ┃ ┃┗━┓┃┗┫┃┣━┛┣━┛┣╸  ┃
-" ╹ ╹┗━╸┗━┛┗━┛╹ ╹╹╹  ╹  ┗━╸ ╹
-" {{{
+" NeoSnippet {{{
 " Plugin key-mappings.
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 smap <C-k>     <Plug>(neosnippet_expand_or_jump)
@@ -411,10 +382,7 @@ function! s:is_whitespace()
 endfunction
 "}}}
 "
-" ┏┓╻┏━╸┏━┓╺┳┓╺┳╸┏━┓┏━╸┏━╸
-" ┃┗┫┣╸ ┣┳┛ ┃┃ ┃ ┣┳┛┣╸ ┣╸
-" ╹ ╹┗━╸╹┗╸╺┻┛ ╹ ╹┗╸┗━╸┗━╸
-" {{{
+" NERDTree {{{
 map <leader>n :NERDTreeToggle<cr>
 "autocmd StdinReadPre * let s:std_in=1
 "autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
@@ -427,10 +395,7 @@ let g:NERDTreeActivateNode='<Space>'
 "let g:NERDTreeHijackNetrw=1
 " }}}
 
-" ╺┳╸┏━┓┏━╸┏┓ ┏━┓┏━┓
- " ┃ ┣━┫┃╺┓┣┻┓┣━┫┣┳┛
- " ╹ ╹ ╹┗━┛┗━┛╹ ╹╹┗╸
-" {{{
+" TagBar {{{
 nmap <F12> :TagbarToggle<CR>
 
 autocmd FileType tagbar setlocal nocursorline nocursorcolumn
