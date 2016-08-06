@@ -18,8 +18,6 @@ call plug#begin('~/.config/nvim/plugged')
   Plug '~/.development/vim/vim-one'
   Plug '~/.development/vim/vim-two-firewatch'
 
-
-
   Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
   Plug 'zchee/deoplete-jedi'
   Plug 'ryanoasis/vim-devicons'
@@ -71,6 +69,33 @@ call plug#end()
 
 let g:netrw_liststyle=3
 " }}}
+
+" ╺┳┓┏━╸╻ ╻╻┏━╸┏━┓┏┓╻┏━┓
+"  ┃┃┣╸ ┃┏┛┃┃  ┃ ┃┃┗┫┗━┓
+" ╺┻┛┗━╸┗┛ ╹┗━╸┗━┛╹ ╹┗━┛
+" {{{
+let g:WebDevIconsOS = 'Darwin'
+let g:DevIconsEnableFoldersOpenClose = 1
+let g:WebDevIconsUnicodeDecorateFolderNodesDefaultSymbol = ''
+let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+let g:WebDevIconsUnicodeDecorateFileNodesDefaultSymbol = ''
+let g:DevIconsDefaultFolderOpenSymbol = ''
+let g:DevIconsDefaultFolderClosedSymbol = ''
+
+let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols = {} " needed
+
+let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['beam'] = ''
+let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['ex'] = ''
+let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['exs'] = ''
+let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['feature'] = ''
+let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['md'] = ''
+let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['markdown'] = ''
+let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['rb'] = ''
+let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['ruby-version'] = ''
+let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['sass'] = ''
+let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['scss'] = ''
+let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['sh'] = ''
+"}}}
 
 " ┏━╸╻  ┏━┓┏┓ ┏━┓╻     ┏━╸┏━┓┏┓╻┏━╸╻┏━╸╻ ╻┏━┓┏━┓╺┳╸╻┏━┓┏┓╻
 " ┃╺┓┃  ┃ ┃┣┻┓┣━┫┃     ┃  ┃ ┃┃┗┫┣╸ ┃┃╺┓┃ ┃┣┳┛┣━┫ ┃ ┃┃ ┃┃┗┫
