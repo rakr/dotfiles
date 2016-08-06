@@ -6,14 +6,67 @@
 " ┣━┛┃  ┃ ┃┃╺┓┃┃┗┫┗━┓
 " ╹  ┗━╸┗━┛┗━┛╹╹ ╹┗━┛
 " {{{
+function! DoRemote(arg)
+  if (has("nvim"))
+    UpdateRemotePlugins
+  endif
+endfunction
+
 call plug#begin('~/.config/nvim/plugged')
 
-" My local repos
-Plug '~/.development/vim/vim-one'
-Plug '~/.development/vim/vim-two-firewatch'
+  " My local repos
+  Plug '~/.development/vim/vim-one'
+  Plug '~/.development/vim/vim-two-firewatch'
 
-Plug 'tpope/vim-fugitive'
-Plug 'itchyny/lightline.vim'
+
+
+  Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
+  Plug 'zchee/deoplete-jedi'
+  Plug 'ryanoasis/vim-devicons'
+  Plug 'junegunn/vim-easy-align'
+  Plug 'easymotion/vim-easymotion'
+  Plug 'tpope/vim-fugitive'
+  Plug 'airblade/vim-gitgutter'
+  Plug 'nathanaelkane/vim-indent-guides'
+  Plug 'itchyny/lightline.vim'
+  Plug 'terryma/vim-multiple-cursors'
+  Plug 'benekastah/neomake'
+  Plug 'Shougo/neosnippet.vim'
+  Plug 'Shougo/neosnippet-snippets'
+  Plug 'scrooloose/nerdcommenter'
+  Plug 'scrooloose/nerdtree'
+  Plug 'majutsushi/tagbar'
+  Plug 'rakr/vim-togglebg'
+  Plug 'jszakmeister/vim-togglecursor'
+  Plug 'christoomey/vim-tmux-navigator'
+  Plug 'tpope/vim-unimpaired'
+  Plug 'Shougo/vimproc.vim', { 'do' : 'make' }
+
+  " Language plugins
+  Plug 'sheerun/vim-polyglot'
+  Plug 'asciidoc/vim-asciidoc'
+  Plug 'tpope/vim-bundler'
+  Plug 'kchmck/vim-coffee-script'
+  Plug 'tpope/vim-cucumber'
+  "Plug 'awetzel/elixir.nvim', { 'do': 'yes \| ./install.sh' }
+  "Plug 'archSeer/elixir.nvim'
+  Plug 'elixir-lang/vim-elixir'
+  Plug 'mmorearty/elixir-ctags'
+  Plug 'heartsentwined/vim-ember-script'
+  Plug 'dag/vim-fish'
+  Plug 'fatih/vim-go'
+  Plug 'jstemmer/gotags'
+  Plug 'digitaltoad/vim-pug'
+  Plug 'tpope/vim-haml' " Sass, Scss and Haml
+  Plug 'othree/html5.vim'
+  Plug 'jelera/vim-javascript-syntax'
+  Plug 'pangloss/vim-javascript'
+  Plug 'othree/yajs.vim'
+  Plug 'tpope/vim-markdown'
+  Plug 'mustache/vim-mustache-handlebars'
+  Plug 'tpope/vim-rails'
+  Plug 'vim-ruby/vim-ruby'
+
 call plug#end()
 
 let g:netrw_liststyle=3
