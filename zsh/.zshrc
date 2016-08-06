@@ -33,6 +33,7 @@ source ~/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 ###
 # Completion
 ##
+fpath=(~/.config/zsh/zsh-completions/src $fpath)
 autoload -U compinit
 compinit
 zmodload -i zsh/complist        
