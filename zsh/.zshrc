@@ -1,11 +1,15 @@
-#
+###
+# Prompt
+##
 autoload -U promptinit && promptinit
 PURE_PROMPT_SYMBOL=" "
 PURE_GIT_DOWN_ARROW=""
 PURE_GIT_UP_ARROW=""
 prompt pure
 
+###
 # History
+##
 HISTZISE=1000
 SAVEHIST=1000
 HISTFILE=~/.zsh_history
@@ -67,6 +71,9 @@ zstyle ':completion:*:killall:*' force-list always
 users=(jvoisin root)           # because I don't care about others
 zstyle ':completion:*' users $users
 bindkey -M menuselect '^[[Z' reverse-menu-complete
-#generic completion with --help
+
+###
+# Generic completion with --help
+##
 compdef _gnu_generic gcc
 compdef _gnu_generic gdb
