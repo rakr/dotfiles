@@ -47,6 +47,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'tpope/vim-cucumber'
   "Plug 'awetzel/elixir.nvim', { 'do': 'yes \| ./install.sh' }
   "Plug 'archSeer/elixir.nvim'
+  Plug 'lambdatoast/elm.vim'
   Plug 'elixir-lang/vim-elixir'
   Plug 'mmorearty/elixir-ctags'
   Plug 'heartsentwined/vim-ember-script'
@@ -190,7 +191,7 @@ let &colorcolumn='72,78'
 " Recommended: continuous vertical split line.
 set fillchars=vert:\│
 
-set background=dark
+set background=light
 let g:two_firewatch_italics=1
 let g:one_allow_italics = 1
 let g:material_allow_italics = 1
