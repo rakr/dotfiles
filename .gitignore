@@ -3,3 +3,4 @@ plugged/
 plug.vim
 plug.vim.old
 .netrwhist
+configstore/
