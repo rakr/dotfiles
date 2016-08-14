@@ -31,7 +31,17 @@ colors
 zsh-mime-setup # run everything as if it's an executable
 select-word-style bash
 
+###
+# Go
+##
+export GOPATH=~/.development/go
+export GOROOT=~/.development/go
+export GOBIN=~/.development/go/bin
+export PATH=$PATH:$GOROOT/bin
+
+###
 # Auto-suggestions
+##
 source ~/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 ###
