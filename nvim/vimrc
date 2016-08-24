@@ -10,14 +10,17 @@ endfunction
 call plug#begin('~/.config/nvim/plugged')
   " My local repos
   Plug '~/.development/vim/vim-one'
+  Plug '~/.development/vim/vim-fruit'
   Plug '~/.development/vim/vim-material'
   Plug '~/.development/vim/vim-two-firewatch'
+  Plug 'atelierbram/Base2Tone-vim'
 
+  Plug 'rking/ag.vim'
   Plug 'craigemery/vim-autotag'
   Plug 'ctrlpvim/ctrlp.vim'
   Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
   Plug 'zchee/deoplete-jedi'
-  Plug 'ryanoasis/vim-devicons'
+  "Plug 'ryanoasis/vim-devicons'
   Plug 'junegunn/vim-easy-align'
   Plug 'easymotion/vim-easymotion'
   Plug 'xolox/vim-easytags'
@@ -114,27 +117,28 @@ inoremap <expr><C-g> deoplete#mappings#undo_completion()
 "}}}
 
 " DevIcons {{{
-let g:WebDevIconsOS = 'Darwin'
-let g:DevIconsEnableFoldersOpenClose = 1
-let g:WebDevIconsUnicodeDecorateFolderNodesDefaultSymbol = ''
-let g:WebDevIconsUnicodeDecorateFolderNodes = 1
-let g:WebDevIconsUnicodeDecorateFileNodesDefaultSymbol = ''
-let g:DevIconsDefaultFolderOpenSymbol = ''
-let g:DevIconsDefaultFolderClosedSymbol = ''
+"let g:WebDevIconsOS = 'Darwin'
+"let g:DevIconsEnableFoldersOpenClose = 1
+"let g:WebDevIconsUnicodeDecorateFolderNodesDefaultSymbol = ''
+"let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+"let g:WebDevIconsUnicodeDecorateFileNodesDefaultSymbol = ''
+"let g:DevIconsDefaultFolderOpenSymbol = ''
+"let g:DevIconsDefaultFolderClosedSymbol = ''
 
-let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols = {} " needed
+"let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols = {} " needed
 
-let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['beam'] = ''
-let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['ex'] = ''
-let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['exs'] = ''
-let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['feature'] = ''
-let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['md'] = ''
-let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['markdown'] = ''
-let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['rb'] = ''
-let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['ruby-version'] = ''
-let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['sass'] = ''
-let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['scss'] = ''
-let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['sh'] = ''
+"let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['beam'] = ''
+"let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['css'] = ''
+"let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['ex'] = ''
+"let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['exs'] = ''
+"let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['feature'] = ''
+"let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['md'] = ''
+"let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['markdown'] = ''
+"let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['rb'] = ''
+"let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['ruby-version'] = ''
+"let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['sass'] = ''
+"let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['scss'] = ''
+"let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['sh'] = ''
 "}}}
 
 " GitGutter {{{
@@ -191,11 +195,11 @@ let &colorcolumn='72,78'
 " Recommended: continuous vertical split line.
 set fillchars=vert:\│
 
-set background=light
+set background=dark
 let g:two_firewatch_italics=1
 let g:one_allow_italics = 1
 let g:material_allow_italics = 1
-colo two-firewatch
+colo fruit
 "}}}
 
 " Go Support {{{
@@ -245,7 +249,7 @@ function! LightLineModified()
 endfunction
 
 function! LightLineReadonly()
-  return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? '' : ''
+  return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? '' : ''
 endfunction
 
 function! LightLineFilename()
@@ -260,7 +264,7 @@ endfunction
 function! LightLineFugitive()
   if &ft !~? 'vimfiler\|gundo' && exists("*fugitive#head")
     let branch = fugitive#head()
-    return branch !=# '' ? ' '.branch : ''
+    return branch !=# '' ? ' '.branch : ''
   endif
   return ''
 endfunction
@@ -323,6 +327,9 @@ set pastetoggle=<f6>
 " Fold Mapping
 nnoremap <space> za
 vnoremap <space> za
+
+" Toggle background
+call togglebg#map("F5")
 " }}}
 
 " NeoMake {{{
