@@ -9,11 +9,17 @@ endfunction
 
 call plug#begin('~/.config/nvim/plugged')
   " My local repos
+  Plug '~/.development/vim/papercolor-theme/'
   Plug '~/.development/vim/vim-one'
-  Plug '~/.development/vim/vim-fruit'
-  Plug '~/.development/vim/vim-material'
   Plug '~/.development/vim/vim-two-firewatch'
+  Plug '~/.development/vim/vim-hydromel'
   Plug 'atelierbram/Base2Tone-vim'
+  Plug 'cocopon/svss.vim'
+  Plug 'chriskempson/vim-tomorrow-theme'
+  Plug 'KKPMW/moonshine-vim'
+  Plug 'guns/xterm-color-table.vim'
+  Plug 'reedes/vim-colors-pencil'
+  Plug 'whatyouhide/vim-gotham'
 
   Plug 'rking/ag.vim'
   Plug 'craigemery/vim-autotag'
@@ -35,6 +41,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'Shougo/neosnippet-snippets'
   Plug 'scrooloose/nerdcommenter'
   Plug 'scrooloose/nerdtree'
+  Plug 'StanAngeloff/php.vim'
   Plug 'majutsushi/tagbar'
   Plug 'rakr/vim-togglebg'
   Plug 'jszakmeister/vim-togglecursor'
@@ -145,8 +152,8 @@ inoremap <expr><C-g> deoplete#mappings#undo_completion()
 let g:gitgutter_sign_added = '+'
 let g:gitgutter_sign_modified = '∼'
 let g:gitgutter_sign_removed = '-'
-let g:gitgutter_sign_removed_first_line = ''
-let g:gitgutter_sign_modified_removed = ''
+let g:gitgutter_sign_removed_first_line = '⇥'
+let g:gitgutter_sign_modified_removed = '≄'
 " }}}
 
 " Global Configuration {{{
@@ -191,15 +198,16 @@ set smartcase
 set synmaxcol=500
 syntax on
 
-let &colorcolumn='72,78'
+"let &colorcolumn='78'
 " Recommended: continuous vertical split line.
 set fillchars=vert:\│
 
-set background=dark
+set background=light
+let g:hydromel_italics=1
 let g:two_firewatch_italics=1
 let g:one_allow_italics = 1
 let g:material_allow_italics = 1
-colo fruit
+colo hydromel
 "}}}
 
 " Go Support {{{
@@ -240,16 +248,18 @@ let g:lightline = {
       \   'fileencoding': 'LightLineFileencoding',
       \   'mode': 'LightLineMode',
       \ },
-      \ 'separator': { 'left': '', 'right': '' },
-      \ 'subseparator': { 'left': '', 'right': '' }
+      \ 'separator': { 'left': '', 'right': '' },
+      \ 'subseparator': { 'left': '│', 'right': '│' }
       \ }
 
+      "\ 'separator': { 'left': '◣', 'right': '' },
+      "\ 'subseparator': { 'left': '', 'right': '' }
 function! LightLineModified()
   return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '●' : &modifiable ? '' : '-'
 endfunction
 
 function! LightLineReadonly()
-  return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? '' : ''
+  return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? '⊗' : ''
 endfunction
 
 function! LightLineFilename()
@@ -264,7 +274,7 @@ endfunction
 function! LightLineFugitive()
   if &ft !~? 'vimfiler\|gundo' && exists("*fugitive#head")
     let branch = fugitive#head()
-    return branch !=# '' ? ' '.branch : ''
+    return branch !=# '' ? '⌥  '.branch : ''
   endif
   return ''
 endfunction
@@ -338,7 +348,6 @@ let g:neomake_open_list = 0
 let g:neomake_list_height = 5
 let g:neomake_serialize = 1
 let g:neomake_verbose = 0
-let g:neomake_warning_sign = {'text': '', 'texthl': 'NeomakeWarningSign'}
 let g:neomake_coffeescript_enabled_makers = ['coffeelint']
 let g:neomake_elixir_enabled_makers = ['elixir']
 "let g:neomake_scss_enabled_checkers = ['scsslint']
@@ -352,10 +361,10 @@ augroup run_neomake
   autocmd! BufWritePost * Neomake
 augroup end
 
-let g:neomake_error_sign   = {'text': '', 'texthl': 'ErrorMsg'}
-let g:neomake_warning_sign = {'text': '', 'texthl': 'WarningMsg'}
-let g:neomake_message_sign = {'text': '!', 'texthl': 'WarningMsg'}
-let g:neomake_info_sign    = {'text': '', 'texthl': 'Todo'}
+let g:neomake_error_sign   = {'text': '▶︎', 'texthl': 'ErrorMsg'}
+let g:neomake_warning_sign = {'text': '▵', 'texthl': 'MoreMsg'}
+let g:neomake_message_sign = {'text': '!', 'texthl': 'MoreMsg'}
+let g:neomake_info_sign    = {'text': '●', 'texthl': 'MoreMsg'}
 
 "}}}
 
@@ -452,4 +461,11 @@ let g:tagbar_type_go = {
 \ }
 " }}}
 
-" vim: set fdl=0 fdm=marker:
+:tnoremap <Esc> <C-\><C-n>
+:tnoremap <A-h> <C-\><C-n><C-w>h
+:tnoremap <A-j> <C-\><C-n><C-w>j
+:tnoremap <A-k> <C-\><C-n><C-w>k
+:tnoremap <A-l> <C-\><C-n><C-w>l
+:nnoremap <A-h> <C-w>h
+:nnoremap <A-j> <C-w>j
+:nnoremap <A-k> <C-w>k
